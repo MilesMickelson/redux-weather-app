@@ -1,0 +1,267 @@
+// Layout formatting
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+[class*="col-"] {
+  float: left;
+}
+
+@font-color: #383838;
+@grey-background: #EEEEEE;
+@tab-color: #337AB7;
+@tab-selected: #235C8E;
+@header-color: #D9EDF7;
+@header-font: #5C91AA;
+@infodisplay-font: #3C763D;
+
+.mainHeader-box {
+  border-radius: round;
+  margin: 0.5em auto 0em auto;
+  padding: 3.5em 0em 0em 2em;
+  overflow: auto;
+  height: 15em;
+  width: 58em;
+  background-color: @grey-background;
+  border: 1px solid #ccc;
+}
+
+.mainTitle {
+  all: unset;
+  font-size: 4em;
+  color: @font-color;
+}
+
+.subTitle {
+  all: unset;
+  font-size: 2em;
+  color: @font-color;
+}
+
+.tab-wrap {
+  margin: 0.5em auto 0em auto;
+  width: 58em;
+}
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: @grey-background;
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  color: white;
+  background-color: @tab-color;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  color: white;
+  background-color: @tab-selected;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+
+.search-wrap {
+  box-sizing: border-box;
+  margin: 0.5em auto 0em auto;
+  width: 58em;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Style the search field */
+form.search-bar input[type=text] {
+  padding: 0.1em 0em 0.1em 1em;
+  font-size: 1em;
+  border: 1px solid #ccc;
+  float: left;
+  height: 1.813em;
+  width: 93%;
+  background: @grey-background;
+}
+
+/* Style the submit button */
+form.search-bar button {
+  float: right;
+  width: 7%;
+  padding: 0.2em;
+  background: #2196F3;
+  color: white;
+  font-size: 17px;
+  border: 1px solid #0b7dda;
+  border-left: none;
+  cursor: pointer;
+}
+
+form.search-bar button:hover {
+  background: #0b7dda;
+}
+
+/* Clear floats */
+form.search-bar::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.body-wrapper {
+  align-self: center;
+  width: 58em;
+  display: flex;
+  overflow: auto;
+  vertical-align: top;
+  margin: 0em auto 0em auto;
+}
+
+.zero-container {
+  display: hidden;
+}
+
+// City Information
+
+.header-name {
+  all: unset;
+  font-size: 1.25em;
+}
+
+.info-header {
+  all: unset;
+  box-sizing: border-box;
+  height: 2.25em;
+  width: 30em;
+  margin-top: 0.5em;
+  padding: 0.4em 0em 0em 1em;
+  float: left;
+  color: @header-font;
+  background-color: @header-color;
+  border: 1px solid @header-color;
+  border-bottom: none;
+}
+
+.info-box {
+  all: unset;
+  box-sizing: border-box;
+  height: 19em;
+  width: 30em;
+  float: left;
+  border: 1px solid @header-color;
+}
+
+.cloud-city {
+  overflow: auto;
+  padding-top: 1.5em;
+  height: 9em;
+  width: 30em;
+  text-align: center;
+}
+
+.info-city-label {
+  all: unset;
+  padding-left: 0.25em;
+  font-size: 2.25em;
+  color: @font-color;
+}
+
+hr {
+  height: 1px;
+  background-color: white;
+  margin-top: 1.5em;
+  width: 28em;
+}
+
+.info-display {
+  overflow: auto;
+  height: 9.25em;
+  width: 100%;
+}
+
+.data-column {
+  float: left;
+  width: 33.33%;
+  text-align: center;
+}
+
+.city-info {
+  color: @infodisplay-font;
+}
+
+.history-header {
+  all: unset;
+  box-sizing: border-box;
+  height: 2.25em;
+  width: 27.5em;
+  margin: 0.5em 0em 0em 0.5em;
+  padding: 0.5em 0em 0em 1em;
+  float: left;
+  color: @header-font;
+  background-color: @header-color;
+  border: 1px solid @header-color;
+  border-bottom: none;
+}
+
+.history-box {
+  all: unset;
+  box-sizing: border-box;
+  height: 19em;
+  width: 27.5em;
+  margin-left: 0.5em;
+  padding-top: 1em;
+  float: left;
+  border: 1px solid @header-color;
+  color: @font-color;
+}
+
+.history-row-dark {
+  height: 3.4em;
+  width: 25.5em;
+  margin: auto;
+  border: 1px solid #ccc;
+  border-left: none;
+  border-right: none;
+  color: @font-color;
+  background-color: @grey-background;
+}
+
+.history-row-light {
+  height: 3.4em;
+  width: 25.5em;
+  margin: auto;
+  color: @font-color;
+}
