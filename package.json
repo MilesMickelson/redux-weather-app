@@ -33,6 +33,7 @@
     "react-redux": "^5.0.6",
     "redux": "^3.7.2",
     "redux-devtools": "^3.4.0",
+    "redux-promise-middleware": "^6.1.1",
     "serve-favicon": "^2.0.1",
     "webpack": "^4.8.3",
     "webpack-cli": "^2.1.3"

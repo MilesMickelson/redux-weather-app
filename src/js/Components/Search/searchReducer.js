@@ -1,90 +1,52 @@
+
 const defaultState = {
-  name: '',
-  date: '',
-  time: '',
-  location: '',
-  temperature: '',
-  pressure: '',
-  humidity: '',
-  lowestTemp: '',
-  highestTemp: '',
-  windSpeed: '',
-  lineItems: []
+  searchTarget: '',
+  city: '',
+  lat: '',
+  lon: '',
+  icon: '',
+  temp: 0,
+  pressure: 0,
+  humidity: 0,
+  lowestTemp: 0,
+  highestTemp: 0,
+  wind: 0,
+  history: []
 };
 
-export default function SearchReducer (state = defaultState, action) {
+export default function SearchReducer(state = defaultState, action) {
   const { type, payload } = action;
 
   switch (type) {
-    case 'UPDATE_NAME': {
+    case 'GET_WEATHER_FULFILLED': {
       return {
         ...state,
-        description: payload.name
-      };
-    }
-
-    case 'UPDATE_TEMPERATURE': {
-      return {
-        ...state,
-        description: payload.temperature
-      };
-    }
-
-    case 'UPDATE_NAME': {
-      return {
-        ...state,
-        description: payload.name
-      };
-    }
-
-    case 'UPDATE_PRESSURE': {
-      return {
-        ...state,
-        description: payload.pressure
-      };
-    }
-
-    case 'UPDATE_HUMIDITY': {
-      return {
-        ...state,
-        description: payload.humidity
-      };
-    }
-
-    case 'UPDATE_LOWEST_TEMP': {
-      return {
-        ...state,
-        description: payload.lowestTEMP
-      };
-    }
-
-    case 'UPDATE_HIGHEST_TEMP': {
-      return {
-        ...state,
-        description: payload.highestTEMP
-      };
-    }
-
-    case 'UPDATE_WIND_SPEED': {
-      return {
-        ...state,
-        description: payload.windSpeed
-      };
-    }
-
-    case 'ADD_HISTORY': {
-      const { name, date, time } = action.payload;
-      return {
-        name: '',
-        date: '',
-        time: '',
-        lineItems: [
-          ...state.lineItems,
-          { name, date, time }
+        city: payload.data.name,
+        lat: payload.data.coord.lat,
+        lon: payload.data.coord.lon,
+        temp: payload.data.main.temp,
+        pressure: payload.data.main.pressure,
+        humidity: payload.data.main.humidity,
+        lowestTemp: payload.data.main.temp_min,
+        highestTemp: payload.data.main.temp_max,
+        wind: payload.data.wind.speed,
+        icon: payload.data.weather.icon,
+        history: [
+          ...state.history,
+          {
+          city: payload.data.name,
+          date: new Date().toLocaleDateString(),
+          time: new Date().toLocaleTimeString()
+          }
         ]
       };
     }
-
+    case 'UPDATE_CITY': {
+      return {
+        ...state,
+        searchTarget: payload.searchTarget,
+      }
+    }
     default: {
       return state;
     }

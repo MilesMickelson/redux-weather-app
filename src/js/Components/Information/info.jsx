@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-export default class Info extends React.Component {
+export default class CityInfo extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
+    const { city, lat, lon, temp, pressure, humidity, lowestTemp, highestTemp, wind, icon } = this.props;
+
     return (
       <div className='wrapper'>
         <div className='info-header'>
@@ -9,33 +15,33 @@ export default class Info extends React.Component {
         </div>
         <div className='info-box'>
           <div className='cloud-city'>
-            <div className='fa fa-cloud fa-2x' aria-hidden='true'></div>
-            <div className='info-city-label'>San Diego</div>
-            <p id='location'>Lat/Long: 33.45, 132.06</p>
+            <div>{icon}</div>
+            <div className='info-city-label'>{city}</div>
+            <p id='location'>{lat}, {lon}</p>
             <hr />
           </div>
           <div className='info-display'>
             <div className='data-column'>
-              <label>Temperature (F)</label>
-              <p className='city-info'>96.6 F</p>
-              <label>Lowest Temp (F)</label>
-              <p className='city-info'>73.2 F</p>
+              <label>Temperature ºF</label>
+              <p className='city-info'>{temp}ºF</p>
+              <label>Lowest Temp ºF</label>
+              <p className='city-info'>{lowestTemp}ºF</p>
             </div>
             <div className='data-column'>
               <label>Pressure</label>
-              <p className='city-info'>955</p>
-              <label>Highest Temp (F)</label>
-              <p className='city-info'>101.2 F</p>
+              <p className='city-info'>{pressure}</p>
+              <label>Highest Temp ºF</label>
+              <p className='city-info'>{highestTemp} ºF</p>
             </div>
             <div className='data-column'>
               <label>Humidity</label>
-              <p className='city-info'>37%</p>
+              <p className='city-info'>{humidity}%</p>
               <label>Wind Speed</label>
-              <p className='city-info'>22.09mph</p>
+              <p className='city-info'>{wind}mph</p>
             </div>
           </div>
         </div>
       </div>
-    );
+    )
   }
 }
