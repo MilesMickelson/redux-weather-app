@@ -1,8 +1,8 @@
 import React from 'react';
-import Header from './Components/Header/header';
-import Search from './Components/Search/search';
-import Info from './Components/Information/info';
-import History from './Components/History/history';
+import Header from './Components/Header/Header';
+import Search from './Components/Search/Search';
+import Info from './Components/Information/Info';
+import SearchHistory from './Components/History/SearchHistory';
 
 export default class App extends React.Component {
   render() {
@@ -12,7 +12,7 @@ export default class App extends React.Component {
         <Search />
         <div className='body-wrapper'>
           <Info />
-          <History />
+          <SearchHistory />
         </div>
       </div>
     );

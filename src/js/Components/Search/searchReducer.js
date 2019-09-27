@@ -1,52 +1,56 @@
+import moment from 'moment';
 
-const defaultState = {
-  searchTarget: '',
-  city: '',
-  lat: '',
-  lon: '',
-  icon: '',
+const initalState = {
+  lat: null,
+  lon: null,
   temp: 0,
   pressure: 0,
   humidity: 0,
-  lowestTemp: 0,
-  highestTemp: 0,
+  lowTemp: 0,
+  highTemp: 0,
   wind: 0,
-  history: []
+  searchInput: '',
+  searchedCity: 'Enter a city',
+  history: [],
+  icon: 'O1d',
+  error: false
 };
 
-export default function SearchReducer(state = defaultState, action) {
+export default function searchReducer(state = initalState, action) {
   const { type, payload } = action;
 
   switch (type) {
-    case 'GET_WEATHER_FULFILLED': {
+    case 'GET_WEATHER': {
       return {
         ...state,
-        city: payload.data.name,
-        lat: payload.data.coord.lat,
-        lon: payload.data.coord.lon,
-        temp: payload.data.main.temp,
-        pressure: payload.data.main.pressure,
-        humidity: payload.data.main.humidity,
-        lowestTemp: payload.data.main.temp_min,
-        highestTemp: payload.data.main.temp_max,
-        wind: payload.data.wind.speed,
-        icon: payload.data.weather.icon,
+        searchedCity: payload.name,
+        lat: payload.coord.lat,
+        lon: payload.coord.lon,
+        temp: payload.main.temp.toFixed(0),
+        pressure: payload.main.pressure,
+        humidity: payload.main.humidity,
+        lowTemp: payload.main.temp_min.toFixed(0),
+        highTemp: payload.main.temp_max.toFixed(0),
+        wind: payload.wind.speed,
+        icon: payload.weather[0].icon,
+        error: false,
         history: [
           ...state.history,
-          {
-          city: payload.data.name,
-          date: new Date().toLocaleDateString(),
-          time: new Date().toLocaleTimeString()
+          { searchedCity: payload.name,
+            date: moment().format('I'),
+            time: moment().format('h:mm:ss a')
           }
         ]
-      };
-    }
-    case 'UPDATE_CITY': {
-      return {
-        ...state,
-        searchTarget: payload.searchTarget,
       }
     }
+
+    case 'GET_WEATHER_FAIL': {
+      return {
+        ...state,
+        error: true
+      }
+    }
+
     default: {
       return state;
     }

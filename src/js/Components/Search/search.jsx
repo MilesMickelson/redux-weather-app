@@ -1,31 +1,31 @@
-import React, { Component } from 'react';
-import { updateCity, getWeather } from './searchActions';
+import React from 'react';
 
-export default class Search extends Component {
+import { connect } from 'react-redux';
+import { getWeather } from './weather_Action';
+
+class Search extends React.Component {
   constructor(props) {
     super(props);
-    this.handleInput = this.handleInput.bind(this);
-    this.handleSearch = this.handleSearch.bind(this);
-    this.handleButton = this.handleButton.bind(this);
+
+    this.state= {
+      city: ''
+    };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
-  handleInput(event) {
-    const { dispatch } = this.props;
-    const { value } = event.target;
-    dispatch(updateCity(value));
+  handleChange(e) {
+    this.setState({ city: e.target.value });
   }
 
-  handleSearch() {
-    const { dispatch, searchTarget } = this.props;
-    dispatch(getWeather(searchTarget));
+  handleSubmit(city) {
+    const searchedCity =  this.state.city;
+    this.props.getWeather(searchedCity);
   }
 
-  handleButton(event) {
-    const { dispatch } = this.props;
-    const { value } = event.target;
-    dispatch(updateCity(value));
-    const { searchTarget } = this.props;
-    dispatch(getWeather(searchTarget));
+  handleClick(e) {
+    this.props.getWeather(e.target.name);
   }
 
   render() {
@@ -34,20 +34,20 @@ export default class Search extends Component {
         <div className='col-12'>
           <div className='tab-wrap'>
             <div className='tab'>
-              <button type='button' value='San Diego' onClick={ this.handleButton }>San Diego</button>
-              <button type='button' value='Los Angeles' onClick={ this.handleButton }>Los Angeles</button>
-              <button type='button' value='Portland' onClick={ this.handleButton }>Portland</button>
-              <button type='button' value='Las Vegas' onClick={ this.handleButton }>Las Vegas</button>
-              <button type='button' value='Dallas' onClick={ this.handleButton }>Dallas</button>
-              <button type='button' value='New York' onClick={ this.handleButton }>New York</button>
-              <button type='button' value='London' onClick={ this.handleButton }>London</button>
+              <button type='button' name='San Diego' onClick={this.handleClick}>San Diego</button>
+              <button type='button' name='Los Angeles' onClick={this.handleClick}>Los Angeles</button>
+              <button type='button' name='Portland' onClick={this.handleClick}>Portland</button>
+              <button type='button' name='Las Vegas' onClick={this.handleClick}>Las Vegas</button>
+              <button type='button' name='Dallas' onClick={this.handleClick}>Dallas</button>
+              <button type='button' name='New York' onClick={this.handleClick}>New York</button>
+              <button type='button' name='London' onClick={this.handleClick}>London</button>
             </div>
           </div>
           <div className='search-wrap'>
-            <form className='search-bar' action='action_page.php'>
-              <input type='text' placeholder='Search by city name..' className='search-button'
-              onChange={this.handleInput}/>
-              <button type='button' onClick={this.handleSearch}><i className='fa fa-search'></i></button>
+            <form className='search-bar'>
+              <input type='text' placeholder='Search for city here' name='search'
+              onChange={this.handlechange} value={this.state.city}/>
+              <button type='submit' onClick={() => this.handleSubmit()}><i className='fa fa-search'></i></button>
             </form>
           </div>
         </div>
@@ -55,3 +55,8 @@ export default class Search extends Component {
     );
   }
 }
+
+export default connect(
+  null,
+  { getWeather }
+  )(Search);
