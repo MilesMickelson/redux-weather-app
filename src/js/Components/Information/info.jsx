@@ -10,7 +10,7 @@ function CityInformation(props) {
         <img src={`http://openweathermap.org/img/w/${props.city.icon}.png`}></img>
       )
     } else {
-      return null
+      return null;
     }
   }
 
@@ -34,10 +34,18 @@ function CityInformation(props) {
         </div>
         <div className='info-box'>
           <div className='cloud-city'>
-            <div>{getIcon()}</div>
+            <div className='col-12'>
+            <div className='cloud-cityRow'>
+              <div className='weather-icon'>{getIcon()}</div>
               <div className='info-city-label'>{props.city.searchedCity}</div>
-              <p id='location'>{props.city.lat}, {props.city.lon}</p>
-            <hr />
+            </div>
+            </div>
+            <div className='row'>
+              <div className='col-12'>
+                <p id='location'>Lat/Lon :{props.city.lat}, {props.city.lon}</p>
+                <hr />
+              </div>
+            </div>
           </div>
           <div className='info-display'>
             <div className='data-column'>

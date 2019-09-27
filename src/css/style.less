@@ -99,7 +99,7 @@
 }
 
 /* Style the search field */
-form.search-bar input[type=text] {
+.search-bar input[type=text] {
   padding: 0.1em 0em 0.1em 1em;
   font-size: 1em;
   border: 1px solid #ccc;
@@ -110,7 +110,7 @@ form.search-bar input[type=text] {
 }
 
 /* Style the submit button */
-form.search-bar button {
+.search-bar button {
   float: right;
   width: 7%;
   padding: 0.2em;
@@ -122,12 +122,12 @@ form.search-bar button {
   cursor: pointer;
 }
 
-form.search-bar button:hover {
+.search-bar button:hover {
   background: #0b7dda;
 }
 
 /* Clear floats */
-form.search-bar::after {
+.search-bar::after {
   content: "";
   clear: both;
   display: table;
@@ -170,7 +170,7 @@ form.search-bar::after {
 .info-box {
   all: unset;
   box-sizing: border-box;
-  height: 19em;
+  height: 25em;
   width: 30em;
   float: left;
   border: 1px solid @header-color;
@@ -179,13 +179,28 @@ form.search-bar::after {
 .cloud-city {
   overflow: auto;
   padding-top: 1.5em;
-  height: 9em;
+  height: 11em;
   width: 30em;
+  text-align: center;
+}
+
+.cloud-cityRow {
+  align-self: center;
+  text-align: center;
+  width: 100%;
+  display: flex;
+  overflow: auto;
+  vertical-align: top;
+  margin: 0em auto 0em auto;
+}
+
+.weather-icon {
   text-align: center;
 }
 
 .info-city-label {
   all: unset;
+  text-align: center;
   padding-left: 0.25em;
   font-size: 2.25em;
   color: @font-color;
@@ -231,7 +246,7 @@ hr {
 .history-box {
   all: unset;
   box-sizing: border-box;
-  height: 19em;
+  height: 25em;
   width: 27.5em;
   margin-left: 0.5em;
   padding-top: 1em;

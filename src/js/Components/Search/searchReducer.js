@@ -10,7 +10,7 @@ const initalState = {
   highTemp: 0,
   wind: 0,
   searchInput: '',
-  searchedCity: 'Enter a city',
+  searchedCity: '',
   history: [],
   icon: 'O1d',
   error: false

@@ -19,7 +19,7 @@ class Search extends React.Component {
     this.setState({ city: e.target.value });
   }
 
-  handleSubmit(city) {
+  handleSubmit() {
     const searchedCity =  this.state.city;
     this.props.getWeather(searchedCity);
   }
@@ -44,11 +44,13 @@ class Search extends React.Component {
             </div>
           </div>
           <div className='search-wrap'>
-            <form className='search-bar'>
-              <input type='text' placeholder='Search for city here' name='search'
-              onChange={this.handlechange} value={this.state.city}/>
-              <button type='submit' onClick={() => this.handleSubmit()}><i className='fa fa-search'></i></button>
-            </form>
+            <div className='search-bar'>
+              <input type='text' placeholder='Search for city here' name='search' id='searchForm'
+              value={this.state.city} onChange={this.handleChange} />
+              <button type='text' type='submit' onClick={() => this.handleSubmit()}>
+                <i className='fa fa-search'></i>
+              </button>
+            </div>
           </div>
         </div>
       </div>
