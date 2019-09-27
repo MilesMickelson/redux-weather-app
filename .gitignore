@@ -6,5 +6,5 @@ logs
 node_modules
 .vscode
 dist
-env
+.env
 .prettierrc
