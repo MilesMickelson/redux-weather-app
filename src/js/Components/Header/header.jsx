@@ -7,10 +7,10 @@ export default class Header extends React.Component {
         <div className='col-12'>
           <div className='mainHeader-box'>
             <div className='row'>
-            <p className='mainTitle'>Origin Weather Application</p>
+            <p className='mainTitle'>Weather Forecast</p>
             </div>
             <div className='row'>
-            <p className='subTitle'>Always know if you'll need an umbrella!</p>
+            <p className='subTitle'>Always know what weather to prepare for</p>
             </div>
           </div>
         </div>
